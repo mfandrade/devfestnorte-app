@@ -4,9 +4,10 @@
     tools:context="info.mfandrade.mobile.devfestnorte.MainActivity" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_options"
+        android:icon="@drawable/ic_action_overflow"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        android:title="@string/app_name"
+        app:showAsAction="ifRoom"/>
 
 </menu>
