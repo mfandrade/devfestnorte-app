@@ -1,5 +1,7 @@
 package info.mfandrade.mobile.devfestnorte;
 
+import info.mfandrade.mobile.devfestnorte.rawdata.CONTANTS;
+
 import java.util.Locale;
 
 import android.os.Bundle;
@@ -15,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
@@ -130,7 +134,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a PlaceholderFragment (defined as a static inner class
 			// below).
-			return PlaceholderFragment.newInstance(position + 1);
+			return PlaceholderFragment.newInstance(position);
 		}
 
 		@Override
@@ -167,9 +171,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		 */
 		public static PlaceholderFragment newInstance(int sectionNumber) {
 			PlaceholderFragment fragment = new PlaceholderFragment();
-			Bundle args = new Bundle();
-			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-			fragment.setArguments(args);
+			Bundle bundle = new Bundle();
+			bundle.putInt(ARG_SECTION_NUMBER, sectionNumber);
+			fragment.setArguments(bundle);
 			return fragment;
 		}
 
@@ -177,8 +181,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+			ListView listTalks = (ListView) rootView.findViewById(R.id.list_talks);
+
+			Bundle args = getArguments();
+			int section = args.getInt(ARG_SECTION_NUMBER);
+			String[] schedule = CONTANTS.TALKS[section];
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(listTalks.getContext(), android.R.layout.simple_list_item_1, schedule);
+			listTalks.setAdapter(adapter);
+
 			return rootView;
 		}
 	}
