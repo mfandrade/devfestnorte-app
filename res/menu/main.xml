@@ -4,34 +4,29 @@
     tools:context="info.mfandrade.mobile.devfestnorte.MainActivity" >
 
     <item
-        android:id="@+id/action_mobile"
-        android:icon="@drawable/ic_action_android"
-        android:title="@string/title_mobile"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/action_webcloud"
-        android:icon="@drawable/ic_action_cloud"
-        android:title="@string/title_webcloud"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/action_talks"
+        android:icon="@drawable/ic_action_dock"
+        android:title="@string/action_talks"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/action_speakers"
         android:icon="@drawable/ic_action_group"
-        android:title="@string/title_speakers"
-        app:showAsAction="never"/>
+        android:title="@string/action_speakers"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/action_place"
         android:icon="@drawable/ic_action_place"
-        android:title="@string/title_place"
+        android:title="@string/action_place"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_city"
         android:icon="@drawable/ic_action_map"
-        android:title="@string/title_city"
+        android:title="@string/action_city"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_about"
         android:icon="@drawable/ic_action_about"
-        android:title="@string/title_about"
+        android:title="@string/action_about"
         app:showAsAction="never"/>
-    
+
 </menu>

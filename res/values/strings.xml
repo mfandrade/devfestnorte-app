@@ -2,11 +2,16 @@
 <resources>
 
     <string name="app_name">DevFest Norte 2014</string>
+    
     <string name="title_mobile">Mobile</string>
     <string name="title_webcloud">Web&amp;Cloud</string>
-    <string name="title_speakers">Palestrantes</string>
-    <string name="title_place">Local do evento</string>
-    <string name="title_city">Belém do Pará</string>
-    <string name="title_about">Sobre o DevFest Norte</string>
+    
+    <string name="action_talks">Trilhas</string>
+    <string name="action_speakers">Palestrantes</string>
+    <string name="action_place">Local do evento</string>
+    <string name="action_city">Belém do Pará</string>
+    <string name="action_about">Sobre o DevFest Norte</string>
+    
+    <string name="hello_world">Hello world!</string>
 
 </resources>
