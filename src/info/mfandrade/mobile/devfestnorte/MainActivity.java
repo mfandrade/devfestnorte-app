@@ -1,6 +1,7 @@
 package info.mfandrade.mobile.devfestnorte;
 
-import info.mfandrade.mobile.devfestnorte.rawdata.CONTANTS;
+import info.mfandrade.mobile.devfestnorte.rawdata.Event;
+import info.mfandrade.mobile.devfestnorte.rawdata.Talk;
 
 import java.util.Locale;
 
@@ -187,8 +188,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 			Bundle args = getArguments();
 			int section = args.getInt(ARG_SECTION_NUMBER);
-			String[] schedule = CONTANTS.TALKS[section];
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(listTalks.getContext(), android.R.layout.simple_list_item_1, schedule);
+			Talk[] schedule = Event.getInstance().getTalks(section);
+			ArrayAdapter<Talk> adapter = new ArrayAdapter<Talk>(listTalks.getContext(), android.R.layout.simple_list_item_1, schedule);
 			listTalks.setAdapter(adapter);
 
 			return rootView;
