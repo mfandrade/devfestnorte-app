@@ -16,8 +16,7 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+			getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
 
@@ -34,7 +33,9 @@ public class MainActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_options) {
+		if (id == R.id.action_mobile) {
+			return true;
+		} else if (id == R.id.action_webcloud) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -49,10 +50,8 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 			return rootView;
 		}
 	}

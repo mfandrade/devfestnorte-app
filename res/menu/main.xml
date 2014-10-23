@@ -4,10 +4,14 @@
     tools:context="info.mfandrade.mobile.devfestnorte.MainActivity" >
 
     <item
-        android:id="@+id/action_options"
-        android:icon="@drawable/ic_action_overflow"
-        android:orderInCategory="100"
-        android:title="@string/app_name"
+        android:id="@+id/action_mobile"
+        android:icon="@drawable/ic_action_android"
+        android:title="@string/title_mobile"
         app:showAsAction="ifRoom"/>
-
+    <item
+        android:id="@+id/action_webcloud"
+        android:icon="@drawable/ic_action_cloud"
+        android:title="@string/title_webcloud"
+        app:showAsAction="ifRoom"/>
+    
 </menu>
