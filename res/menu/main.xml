@@ -13,5 +13,25 @@
         android:icon="@drawable/ic_action_cloud"
         android:title="@string/title_webcloud"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_speakers"
+        android:icon="@drawable/ic_action_group"
+        android:title="@string/title_speakers"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_place"
+        android:icon="@drawable/ic_action_place"
+        android:title="@string/title_place"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_city"
+        android:icon="@drawable/ic_action_map"
+        android:title="@string/title_city"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_about"
+        android:icon="@drawable/ic_action_about"
+        android:title="@string/title_about"
+        app:showAsAction="never"/>
     
 </menu>
