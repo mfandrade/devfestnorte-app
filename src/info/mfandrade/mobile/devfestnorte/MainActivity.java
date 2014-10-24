@@ -189,7 +189,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 			Bundle args = getArguments();
 			int section = args.getInt(ARG_SECTION_NUMBER);
 			Talk[] schedule = Event.getInstance().getTalks(section);
-			ArrayAdapter<Talk> adapter = new ArrayAdapter<Talk>(listTalks.getContext(), android.R.layout.simple_list_item_1, schedule);
+			ArrayAdapter<Talk> adapter = new ArrayAdapter<Talk>(listTalks.getContext(), R.layout.layout_listvew, schedule);
 			listTalks.setAdapter(adapter);
 
 			return rootView;
