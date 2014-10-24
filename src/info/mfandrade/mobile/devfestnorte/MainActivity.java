@@ -23,8 +23,8 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-	public static final int TASKS_MOBILE = 0;
-	public static final int TASKS_WEBCLOUD = 1;
+	public static final int TALKS_MOBILE = 0;
+	public static final int TALKS_WEBCLOUD = 1;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -148,9 +148,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
 			switch (position) {
-			case TASKS_MOBILE:
+			case TALKS_MOBILE:
 				return getString(R.string.title_mobile).toUpperCase(l);
-			case TASKS_WEBCLOUD:
+			case TALKS_WEBCLOUD:
 				return getString(R.string.title_webcloud).toUpperCase(l);
 			}
 			return null;
@@ -172,9 +172,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		 */
 		public static PlaceholderFragment newInstance(int sectionNumber) {
 			PlaceholderFragment fragment = new PlaceholderFragment();
-			Bundle bundle = new Bundle();
-			bundle.putInt(ARG_SECTION_NUMBER, sectionNumber);
-			fragment.setArguments(bundle);
+			Bundle args = new Bundle();
+			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+			fragment.setArguments(args);
 			return fragment;
 		}
 
