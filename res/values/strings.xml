@@ -3,8 +3,8 @@
 
     <string name="app_name">DevFest Norte 2014</string>
     
-    <string name="title_mobile">Mobile</string>
-    <string name="title_webcloud">Web&amp;Cloud</string>
+    <string name="title_tab_mobile">Mobile</string>
+    <string name="title_tab_webcloud">Web&amp;Cloud</string>
     
     <string name="action_talks">Trilhas</string>
     <string name="action_speakers">Palestrantes</string>
@@ -13,5 +13,6 @@
     <string name="action_about">Sobre o DevFest Norte</string>
     
     <string name="hello_world">Hello world!</string>
+    <string name="title_main_activity">Trilhas</string>
 
 </resources>

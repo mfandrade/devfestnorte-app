@@ -89,6 +89,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
+		
 		int id = item.getItemId();
 		switch (id) {
 		case R.id.action_talks:
@@ -149,9 +150,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 			Locale l = Locale.getDefault();
 			switch (position) {
 			case TALKS_MOBILE:
-				return getString(R.string.title_mobile).toUpperCase(l);
+				return getString(R.string.title_tab_mobile).toUpperCase(l);
 			case TALKS_WEBCLOUD:
-				return getString(R.string.title_webcloud).toUpperCase(l);
+				return getString(R.string.title_tab_webcloud).toUpperCase(l);
 			}
 			return null;
 		}
