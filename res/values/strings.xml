@@ -13,6 +13,6 @@
     <string name="action_about">Sobre o DevFest Norte</string>
     
     <string name="hello_world">Hello world!</string>
-    <string name="title_main_activity">Trilhas</string>
+    <string name="title_main_activity">Palestras</string>
 
 </resources>
