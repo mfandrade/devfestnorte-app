@@ -23,14 +23,16 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
+	// Identificadores das abas da tela principal
 	public static final int TALKS_MOBILE = 0;
 	public static final int TALKS_WEBCLOUD = 1;
 
 	/**
-	 * The {@link android.support.v4.view.PagerAdapter} that will provide
-	 * fragments for each of the sections. We use a {@link FragmentPagerAdapter}
-	 * derivative, which will keep every loaded fragment in memory. If this
-	 * becomes too memory intensive, it may be best to switch to a
+	 * O {@link android.support.v4.view.PagerAdapter} é quem vai prover
+	 * os fragments para cada uma das abas.  Foi usada uma subclasse de
+	 * {@link FragmentPagerAdapter} que vai manter cada fragment na memória.
+	 * Assim, só deve ser usado se você tiver umas poucas abas.  Caso
+	 * contrário, é recomendável substituí-lo em favor de 
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
@@ -42,24 +44,22 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		super.onCreate(savedInstanceState);					// De novo, obrigatório
+		setContentView(R.layout.activity_main);				// Apontando o layout desta activity
 
-		// Set up the action bar.
-		final ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		final ActionBar actionBar = getSupportActionBar();				// Nosso app vai ficar compatível desde o Froyo
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);	// Assim se diz que a activity usa abas
 
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the activity.
+		// Cria o adapter que vai retornar o fragment com o conteúdo para cada aba da activity
 		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-		// Set up the ViewPager with the sections adapter.
+		// Seta o adapter no ViewPager
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
-		// When swiping between different sections, select the corresponding
-		// tab. We can also use ActionBar.Tab#select() to do this if we have
-		// a reference to the Tab.
+		// Ao trocar entre abas, deixa com aparência de selecionada a aba correspondente.
+		// Também podíams fazer isso com ActionBar.Tab#select() se tivéssemos uma
+		// referência para a aba.
 		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 			@Override
 			public void onPageSelected(int position) {
@@ -67,31 +67,32 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 			}
 		});
 
-		// For each of the sections in the app, add a tab to the action bar.
-		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-			// Create a tab with text corresponding to the page title defined by
-			// the adapter. Also specify this Activity object, which implements
-			// the TabListener interface, as the callback (listener) for when
-			// this tab is selected.
+		// Adiciona cada uma das abas prevista na action bar
+		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {	// getCount foi sobrescrito com a qtd de abas
+			// Cria uma aba cujo título vai ser o texto do resource string correspondente.
+			// Também aponta onde está implementado o tratador de troca de abas (listener).
 			actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
 		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Infla o menu, adicionando-o à action bar.  Vide res/menu/main.xml
+		// Lembrando que, em dispositivos com botão Opções físico, os itens
+		// não-colapsados do menu aparecem abaixo na tela.
+		// Nos demais dispositivos, é o comportamento padrão da action bar.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+		// Trata os cliques nos itens de menu da actionbar.
+		// Para lidar com o botão Voltar automaticamente, basta
+		// especificar parent activities no AndroidManifest.xml
 		
 		int id = item.getItemId();
-		switch (id) {
+		switch (id) {	// TODO: Falta tratar estes eventos, trocando o fragment com as informações em questão
 		case R.id.action_talks:
 			return true;
 		case R.id.action_speakers:
@@ -108,8 +109,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 	@Override
 	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, switch to the corresponding page in
-		// the ViewPager.
+		// Troca para a aba quando ela estiver selecionada no ViewPager
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
@@ -122,8 +122,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 	}
 
 	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
+	 * Um {@link FragmentPagerAdapter} que retorna um fragment correspondente a
+	 * uma das seções/abas/páginas.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -133,20 +133,23 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 		@Override
 		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a PlaceholderFragment (defined as a static inner class
-			// below).
+			// Este getItem é chamado para instanciar o fragment para uma dada página.
+			// Retorna um PlaceholderFragment.  Aqui, para simplificar, uma classe
+			// interna estática que está mais abaixo neste código, mas você pode (deve)
+			// colocar suas classes de fragment em pacotes separados numa boa.
 			return PlaceholderFragment.newInstance(position);
 		}
 
 		@Override
 		public int getCount() {
-			// Show 2 total pages.
+			// A quantidade de abas.
+			// Como dito, para o FragmentPagerAdapter é bom serem só umas poucas.
 			return 2;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
+			// Define o título das abas, centralizados nas strings de recursos.
 			Locale l = Locale.getDefault();
 			switch (position) {
 			case TALKS_MOBILE:
@@ -159,17 +162,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 	}
 
 	/**
-	 * A placeholder fragment containing a simple view.
+	 * Um placeholder que só contém uma view.  No caso, uma ListView.
 	 */
 	public static class PlaceholderFragment extends Fragment {
 		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
+		 * O nome da variável que vai conter qual seção/aba/página foi selecionada.
 		 */
 		private static final String ARG_SECTION_NUMBER = "section_number";
 
 		/**
-		 * Returns a new instance of this fragment for the given section number.
+		 * Retorna uma nova instância deste fragment com a seção dada.
+		 * O PageAdapter pega o fragment daqui.
+		 * Veja que o número da seção selecionada vai como argumento no Bundle. 
 		 */
 		public static PlaceholderFragment newInstance(int sectionNumber) {
 			PlaceholderFragment fragment = new PlaceholderFragment();
@@ -182,6 +186,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 		public PlaceholderFragment() {
 		}
 
+		/**
+		 * Enquanto que numa activity o ciclo inicia em onCreate, num fragment têm-se o método onCreateView.
+		 * Simplesmente seta os dados da listagem no listview presenta no fragment dependendo da seção selecionada.  
+		 * Aliás, a seção selecionada é obtida justamente do Bundle que tem os argumentos passados.
+		 */
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
