@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="0dp"
-    tools:context="info.mfandrade.mobile.devfestnorte.MainActivity$PlaceholderFragment" >
+    tools:context="info.mfandrade.mobile.devfestnorte.TalksFragment" >
 
     <ListView
         android:id="@+id/list_talks"
