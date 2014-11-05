@@ -25,7 +25,7 @@ public class TalksFragment extends Fragment {
 		Talk[] talks = Event.getInstance().getTalks(section);
 		System.out.println(talks);
 
-		ArrayAdapter<Talk> adapter = new ArrayAdapter<Talk>(getActivity(), R.layout.layout_listvew, talks);
+		ArrayAdapter<Talk> adapter = new ArrayAdapter<Talk>(getActivity(), R.layout.layout_listview, talks);
 		listTalks.setAdapter(adapter);
 
 		return rootView;
