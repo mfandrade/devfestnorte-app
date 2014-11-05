@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
 public class TalksActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -14,12 +15,11 @@ public class TalksActivity extends ActionBarActivity implements ActionBar.TabLis
 	public static final int ID_TAB_WEBCLOUD = 1;
 	public static final String ARG_SELECTED_TAB = "info.mfandrade.mobile.devfestnorte.ARG_SELECTED_TAB";
 	private ActionBar bar;
-	private FragmentTransaction ft;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_talks);
 
 		bar = getSupportActionBar();
 		bar.addTab(bar.newTab().setText(R.string.title_tab_mobile).setTabListener(this));
@@ -35,28 +35,43 @@ public class TalksActivity extends ActionBarActivity implements ActionBar.TabLis
 	}
 
 	@Override
+	public boolean onOptionsItemSelected(MenuItem menuItem) {
+
+		int item = menuItem.getItemId();
+		switch (item) {
+		case R.id.action_talks:
+			return true;
+		case R.id.action_speakers:
+			return true;
+		case R.id.action_place:
+			return true;
+		case R.id.action_city:
+			return true;
+		case R.id.action_about:
+			return true;
+		default:
+			return super.onOptionsItemSelected(menuItem);
+		}
+	}
+
+	@Override
 	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragtran) {
-		
-		final String tabMobile   = getResources().getString(R.string.title_tab_mobile);
+
+		final String tabMobile = getResources().getString(R.string.title_tab_mobile);
 		final String tabWebCloud = getResources().getString(R.string.title_tab_webcloud);
-		
-		Fragment frag = new TalksFragment();
+
 		Bundle args = new Bundle();
-		
-		RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
-		mainLayout.removeAllViews();
-		
-		if(tab.getText().equals(tabMobile)) {
+
+		if (tab.getText().equals(tabMobile)) {
 			args.putInt(ARG_SELECTED_TAB, ID_TAB_MOBILE);
-			
+
 		} else if (tab.getText().equals(tabWebCloud)) {
 			args.putInt(ARG_SELECTED_TAB, ID_TAB_WEBCLOUD);
 		}
+		Fragment frag = new TalksFragment();
 		frag.setArguments(args);
-		
-		ft = getSupportFragmentManager().beginTransaction();
-		ft.add(mainLayout.getId(), frag);
-		ft.commit();
+
+		_showFragment(frag);
 	}
 
 	@Override
@@ -65,5 +80,14 @@ public class TalksActivity extends ActionBarActivity implements ActionBar.TabLis
 
 	@Override
 	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragtran) {
+	}
+
+	private void _showFragment(Fragment fragment) {
+
+		RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
+		mainLayout.removeAllViews();
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.add(mainLayout.getId(), fragment);
+		ft.commit();
 	}
 }
