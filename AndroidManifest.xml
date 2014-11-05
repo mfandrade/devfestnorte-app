@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".TalksActivity"
             android:label="@string/title_main_activity" >
         </activity>
     </application>

@@ -20,7 +20,7 @@ public class SplashActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				// Simplesmente vai para a main activity
-				Intent main = new Intent(SplashActivity.this, MainActivity.class);
+				Intent main = new Intent(SplashActivity.this, TalksActivity.class);
 				startActivity(main);
 			}
 		});
